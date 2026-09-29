@@ -18,7 +18,6 @@ let chartEstadoInstance = null;
 let chartGradoInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Escuchar cambios en la base de datos en tiempo real
   database.ref('asistencia').on('value', (snapshot) => {
     const data = snapshot.val();
     todosLosRegistros = [];
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     aplicarFiltrosYRenderizar();
   });
 
-  // Eventos de Filtros
   document.getElementById('filtroFecha').addEventListener('change', aplicarFiltrosYRenderizar);
   document.getElementById('filtroGrado').addEventListener('change', aplicarFiltrosYRenderizar);
   document.getElementById('filtroAula').addEventListener('change', aplicarFiltrosYRenderizar);
@@ -43,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     aplicarFiltrosYRenderizar();
   });
 
-  // Eventos de Exportación
   document.getElementById('btnExportExcel').addEventListener('click', exportarExcel);
   document.getElementById('btnExportPDF').addEventListener('click', exportarPDF);
 });
@@ -159,3 +156,5 @@ function exportarPDF() {
 
   doc.save("Reporte_Asistencia.pdf");
 }
+
+

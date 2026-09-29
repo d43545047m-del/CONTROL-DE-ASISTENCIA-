@@ -23,7 +23,7 @@ document.getElementById('attendanceForm').addEventListener('submit', function (e
   btn.innerText = 'Guardando...';
 
   const hoy = new Date();
-  const fechaIso = hoy.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+  const fechaIso = hoy.toISOString().split('T')[0];
   const fechaFormateada = hoy.toLocaleDateString('es-ES') + ' ' + hoy.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
 
   const nuevoRegistro = {

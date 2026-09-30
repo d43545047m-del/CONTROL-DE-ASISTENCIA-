@@ -16,7 +16,7 @@
     <div class="card shadow-sm p-4">
       <form id="attendanceForm">
         <div class="row g-3">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <label class="form-label">Grado</label>
             <select id="grado" class="form-select" required>
               <option value="">Seleccionar...</option>
@@ -28,7 +28,7 @@
             </select>
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-2">
             <label class="form-label">Sección / Aula</label>
             <select id="aula" class="form-select" required>
               <option value="">Seleccionar...</option>
@@ -44,11 +44,28 @@
           </div>
 
           <div class="col-md-3">
+            <label class="form-label">Área Curricular</label>
+            <select id="area" class="form-select" required>
+              <option value="">Seleccionar...</option>
+              <option value="ARTE Y CULTURA">ARTE Y CULTURA</option>
+              <option value="CIENCIA Y TECNOLOGÍA">CIENCIA Y TECNOLOGÍA</option>
+              <option value="DESARROLLO PERSONAL, CIUDADANÍA Y CÍVICA">DESARROLLO PERSONAL, CIUDADANÍA Y CÍVICA</option>
+              <option value="CIENCIAS SOCIALES">CIENCIAS SOCIALES</option>
+              <option value="COMUNICACIÓN">COMUNICACIÓN</option>
+              <option value="EDUCACIÓN FÍSICA">EDUCACIÓN FÍSICA</option>
+              <option value="EDUCACIÓN PARA EL TRABAJO">EDUCACIÓN PARA EL TRABAJO</option>
+              <option value="EDUCACIÓN RELIGIOSA">EDUCACIÓN RELIGIOSA</option>
+              <option value="INGLÉS">INGLÉS</option>
+              <option value="MATEMÁTICA">MATEMÁTICA</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
             <label class="form-label">Estudiante</label>
             <input type="text" id="estudiante" class="form-control" placeholder="Nombre completo" required>
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-2">
             <label class="form-label">Estado</label>
             <select id="estado" class="form-select" required>
               <option value="Tardanza">Tardanza</option>
@@ -64,7 +81,6 @@
     </div>
   </div>
 
-  <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
   <script src="app.js"></script>

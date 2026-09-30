@@ -1,4 +1,3 @@
-// Configuración de tu proyecto en Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCqheRJkcSJVPG1XuMEiZlithQKUYV9JKE",
   authDomain: "control-de-asistencia-aef47.firebaseapp.com",
@@ -10,11 +9,9 @@ const firebaseConfig = {
   measurementId: "G-56QDYD0B6Y"
 };
 
-// Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-// Guardar registro
 document.getElementById('attendanceForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -29,6 +26,7 @@ document.getElementById('attendanceForm').addEventListener('submit', function (e
   const nuevoRegistro = {
     grado: document.getElementById('grado').value,
     aula: document.getElementById('aula').value,
+    area: document.getElementById('area').value,
     estudiante: document.getElementById('estudiante').value,
     estado: document.getElementById('estado').value,
     fecha: fechaFormateada,

@@ -1,4 +1,3 @@
-// Configuración de tu proyecto en Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCqheRJkcSJVPG1XuMEiZlithQKUYV9JKE",
   authDomain: "control-de-asistencia-aef47.firebaseapp.com",
@@ -66,7 +65,7 @@ function renderizarTabla(registros) {
   tbody.innerHTML = '';
 
   if (registros.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No se encontraron registros.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">No se encontraron registros.</td></tr>`;
     return;
   }
 
@@ -78,6 +77,7 @@ function renderizarTabla(registros) {
       <td><strong>${r.estudiante}</strong></td>
       <td>${r.grado}</td>
       <td>${r.aula}</td>
+      <td>${r.area || 'N/A'}</td>
       <td><span class="badge ${badgeClass}">${r.estado}</span></td>
       <td class="text-center">
         <button class="btn btn-outline-danger btn-sm" onclick="eliminarRegistro('${r.id}')">Eliminar</button>
@@ -151,10 +151,8 @@ function exportarPDF() {
   doc.autoTable({
     html: '#tablaAsistencia',
     startY: 20,
-    columns: [0, 1, 2, 3, 4]
+    columns: [0, 1, 2, 3, 4, 5]
   });
 
   doc.save("Reporte_Asistencia.pdf");
 }
-
-

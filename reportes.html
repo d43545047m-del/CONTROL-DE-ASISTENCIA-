@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reportes y Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- Librerías para exportar Excel y PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
@@ -78,7 +76,7 @@
       </div>
     </div>
 
-    <!-- Tabla de Historial y Exportación -->
+    <!-- Tabla de Historial -->
     <div class="card p-4 shadow-sm">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h4>📋 Historial Detallado de Registros</h4>
@@ -96,6 +94,7 @@
               <th>Estudiante</th>
               <th>Grado</th>
               <th>Aula/Sección</th>
+              <th>Área Curricular</th>
               <th>Estado</th>
               <th class="text-center">Acción</th>
             </tr>
@@ -107,7 +106,6 @@
     </div>
   </div>
 
-  <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
   <script src="charts.js"></script>

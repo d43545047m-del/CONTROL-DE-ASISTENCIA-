@@ -1,48 +1,27 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyCqheRJkcSJVPG1XuMEiZlithQKUYV9JKE",
-  authDomain: "control-de-asistencia-aef47.firebaseapp.com",
-  databaseURL: "https://control-de-asistencia-aef47-default-rtdb.firebaseio.com",
-  projectId: "control-de-asistencia-aef47",
-  storageBucket: "control-de-asistencia-aef47.firebasestorage.app",
-  messagingSenderId: "918828594178",
-  appId: "1:918828594178:web:e44ff1902cfc4502fca31b",
-  measurementId: "G-56QDYD0B6Y"
-};
+// Cargar lista de estudiantes según Grado y Sección seleccionados
+function cargarEstudiantes() {
+  const gradoSelect = document.getElementById('grado').value;
+  const aulaSelect = document.getElementById('aula').value;
+  const selectEstudiante = document.getElementById('estudiante');
 
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+  selectEstudiante.innerHTML = '<option value="">Seleccionar estudiante...</option>';
 
-document.getElementById('attendanceForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const btn = document.getElementById('btnGuardar');
-  btn.disabled = true;
-  btn.innerText = 'Guardando...';
-
-  const hoy = new Date();
-  const fechaIso = hoy.toISOString().split('T')[0];
-  const fechaFormateada = hoy.toLocaleDateString('es-ES') + ' ' + hoy.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-
-  const nuevoRegistro = {
-    grado: document.getElementById('grado').value,
-    aula: document.getElementById('aula').value,
-    area: document.getElementById('area').value,
-    estudiante: document.getElementById('estudiante').value,
-    estado: document.getElementById('estado').value,
-    fecha: fechaFormateada,
-    fechaFiltro: fechaIso
-  };
-
-  database.ref('asistencia').push(nuevoRegistro)
-    .then(() => {
-      alert('✅ Registro guardado en la nube con éxito');
-      document.getElementById('attendanceForm').reset();
-    })
-    .catch((error) => {
-      alert('❌ Error al guardar: ' + error.message);
-    })
-    .finally(() => {
-      btn.disabled = false;
-      btn.innerText = 'Guardar Registro';
+  if (gradoSelect && aulaSelect && typeof nominaEstudiantes !== 'undefined' && nominaEstudiantes[gradoSelect] && nominaEstudiantes[gradoSelect][aulaSelect]) {
+    selectEstudiante.disabled = false;
+    const lista = nominaEstudiantes[gradoSelect][aulaSelect];
+    
+    lista.forEach(estudiante => {
+      const option = document.createElement('option');
+      option.value = estudiante;
+      option.textContent = estudiante;
+      selectEstudiante.appendChild(option);
     });
-});
+  } else {
+    selectEstudiante.disabled = true;
+    selectEstudiante.innerHTML = '<option value="">Primero selecciona grado y sección...</option>';
+  }
+}
+
+// Escuchar cambios en el selector de Grado y Sección
+document.getElementById('grado').addEventListener('change', cargarEstudiantes);
+document.getElementById('aula').addEventListener('change', cargarEstudiantes);
